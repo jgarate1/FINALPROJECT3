@@ -3,6 +3,8 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 
 import { firebaseAuth } from "./useFirebase";
@@ -11,6 +13,14 @@ const isAuthenticated = ref(false);
 
 const user = ref("");
 
+const googleLogin = async () => {
+  const provider = new GoogleAuthProvider();
+  const credentials = await signInWithPopup(firebaseAuth, provider);
+  if (credentials.user) {
+    isAuthenticated.value = true;
+    user.value = credentials.user.displayName;
+  }
+};
 const useAuth = () => {
   const login = async (username, password) => {
     const credentials = await signInWithEmailAndPassword(
@@ -44,7 +54,7 @@ const useAuth = () => {
     user.value = "";
   };
 
-  return { isAuthenticated, login, signup, logout, user };
+  return { isAuthenticated, login, signup, logout, user, googleLogin };
 };
 
 export default useAuth;

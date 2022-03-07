@@ -8,7 +8,7 @@ import {
   signInWithEmailAndPassword
 } from "firebase/auth";
 
-const { isAuthenticated, login, signup } = useAuth();
+const { isAuthenticated, login, signup, googleLogin} = useAuth();
 
 const username = ref("");
 const password = ref("");
@@ -30,6 +30,10 @@ const signingUp = async () => {
   goToHome();
 };
 
+const google = async () => {
+  await googleLogin();
+  goToHome();
+};
 const goToHome = () => {
   if (isAuthenticated.value) {
     router.push("/");
@@ -50,16 +54,18 @@ const { ready, start } = useTimeout(3000, { controls: true });
             <form @submit.prevent="logginIn" class="flex flex-col p-4 space-y-4">
                 <input type="text" class="p-2 border-2 rounded-lg" placeholder="Username" v-model="username"/>
                 <input type="password" class="p-2 border-2 rounded-lg" placeholder="Password" v-model="password" />
-                <div class="flex space-x-2">
+              <div class="flex space-x-2">
 
-                  <button type= "submit" @submit.prevent="logginIn" class= " w-1/2 rounded-lg py-2 text-indigo-200 bg-red-600">
+                <button type= "submit" @submit.prevent="logginIn" class= " w-1/2 rounded-lg py-2 text-indigo-200 bg-red-600">
                     Login
-                  </button>
-                  <button @click="signingUp" class= "w-1/2 rounded-lg py-2 text-indigo-200 bg-green-600">
-                    Sign Up
-                  </button>
-                </div>
-                
+                </button>
+                <button @click="signingUp" class= "w-1/2 rounded-lg py-2 text-indigo-200 bg-green-600">
+                  Sign Up
+                </button>
+              </div>  
+              <button @click= "google" class="bg-white flex justify-center py-2 rounged-lg hover:bg-gray-300">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+              </button>
             </form>
         </div>
         <div v-if="!ready && error" class="absolute w-1/3 p-4 text-center text-red-800 bg-red-300 rounded-lg  bottom-2 right-2">
