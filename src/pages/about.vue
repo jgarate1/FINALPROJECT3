@@ -1,3 +1,8 @@
+<script setup>
+</script>
 <template>
-    <h1>About Page</h1>
+    <div class="flex flex-col items-center justify-center h-screen-nonav">
+        <h2 class="font-extralight text-6xl tracking-tigher">About Page</h2>
+        <img src="../assets/bgabout.png" alt="Hello BG">
+    </div>
 </template>
