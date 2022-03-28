@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import useAuth from "./composable/useAuth";
 import Index from "./pages/index.vue";
 import About from "./pages/about.vue";
 import Hello from "./pages/hello.vue";
@@ -6,6 +7,8 @@ import NotFound from "./pages/404.vue";
 import Tournament from "./pages/tournaments.vue";
 import Login from "./pages/login.vue";
 import Brackets from "./pages/brackets.vue";
+
+const { isAuthenticated } = useAuth();
 
 const routes = [
   {
@@ -35,11 +38,17 @@ const routes = [
     name: "Login",
     component: Login,
   },
-
   {
     path: "/brackets",
     name: "Brackets",
     component: Brackets,
+    beforeEnter: (to, from, next) => {
+      console.log(isAuthenticated);
+      if (!isAuthenticated.value) {
+        next("/login");
+      }
+      next();
+    },
   },
 
   {
