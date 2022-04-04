@@ -42,66 +42,69 @@ const { ready, start } = useTimeout(3000, { controls: true });
 
 
 <template>
-  <div
+  <div class="block duration-700 delay-150 relative transform transition-all opacity-0 translate-y-12 ease-in-out min-h-screen bg-gray-800 bg-opacity-75" data-replace='{ "translate-y-12": "translate-y-0", "opacity-0": "opacity-100" }'>
+    <div
     class="flex flex-col items-center justify-center space-y-12 min-h-screen-nonav"
   >
      <div class="pl-40 pr-40 py-3 bg-gray-300 rounded-lg">
-     <div class="">
+      <div class="">
             <img class=" h-64" src="../assets/logo.png" alt="Hello BG" />
-     </div>
+      </div>
 
-      <form @submit.prevent="logginIn" class="flex flex-col space-y-2">
-        <input
-          name="username"
-          type="text"
-          class="p-2 border-2 rounded-lg"
-          placeholder="Email"
-          v-model="username"
-        />
-        <span class="text-xs text-center text-red-500">{{ emailError }}</span>
-        <input
-          name="password"
-          type="password"
-          class="p-2 border-2 rounded-lg"
-          placeholder="Password"
-          v-model="password"
-        />
-        <span class="text-xs text-center text-red-500">{{
-          passwordError
-        }}</span>
-
-        <div class="flex space-x-2">
-          <button
-            type="submit"
-            @submit.prevent="logginIn"
-            class="w-1/2 py-2 text-red-200 bg-red-600 rounded-lg"
-          >
-            Login
-          </button>
-          <button
-            @click="signingUp"
-            class="w-1/2 py-2 text-green-200 bg-green-600 rounded-lg"
-          >
-            Sing Up
-          </button>
-        </div>
-        <button
-          @click="google"
-          class="flex justify-center py-2 bg-white rounded-lg hover:bg-gray-300"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-            alt=""
+        <form @submit.prevent="logginIn" class="flex flex-col space-y-2">
+          <input
+            name="username"
+            type="text"
+            class="p-2 border-2 rounded-lg"
+            placeholder="Email"
+            v-model="username"
           />
-        </button>
-      </form>
-    </div>
-    <div
-      v-if="!ready && error"
-      class="absolute w-1/3 p-4 text-center text-red-800 bg-red-300 rounded-lg  bottom-2 right-2"
-    >
-      {{ error }}
+          <span class="text-xs text-center text-red-500">{{ emailError }}</span>
+          <input
+            name="password"
+            type="password"
+            class="p-2 border-2 rounded-lg"
+            placeholder="Password"
+            v-model="password"
+          />
+          <span class="text-xs text-center text-red-500">{{
+          passwordError
+          }}  </span>
+
+          <div class="flex space-x-2">
+              <button
+                type="submit"
+                @submit.prevent="logginIn"
+                class="w-1/2 py-2 text-red-200 bg-red-600 rounded-lg"
+                >
+                Login
+              </button>
+            <button
+              @click="signingUp"
+              class="w-1/2 py-2 text-green-200 bg-green-600 rounded-lg"
+              >
+              Sing Up
+            </button>
+          </div>
+          <button
+            @click="google"
+            class="flex justify-center py-2 bg-white rounded-lg hover:bg-gray-300"
+            >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+              alt=""
+            />
+          </button>
+        </form>
+      </div>
+      <div
+        v-if="!ready && error"
+        class="absolute w-1/3 p-4 text-center text-red-800 bg-red-300 rounded-lg  bottom-2 right-2"
+        >
+        {{ error }}
       
+      </div>
     </div>
   </div>
+  
 </template>
