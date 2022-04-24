@@ -44,6 +44,10 @@ document.addEventListener("click",function(){
                 <p class="text-xl">
                     During a sign up for a tournament, you will be asked to include substitutes if you have any. You can definetely change you team roster but only with members put into your subsitutes list. Otherwise you are not allowed.
                 </p>
+                <li class="text-2xl py-2">How do I contact support?</li>
+                <p class="text-xl">First you must create an account with us. Once you login, you will have a new tab labeled "Support" where you can
+                    submit a request by email or message a live support agent straight through our webpage.
+                </p>
             </ul>
         </div>
     </div>

@@ -25,6 +25,13 @@ const routes = [
     path: "/hello",
     name: "Hello",
     component: Hello,
+    beforeEnter: (to, from, next) => {
+      console.log(isAuthenticated);
+      if (!isAuthenticated.value) {
+        next("/login");
+      }
+      next();
+    },
   },
 
   {
