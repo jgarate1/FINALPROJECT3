@@ -19,15 +19,15 @@ const loggingOut = () => {
                     </router-link>
 
 
-                    <router-link :to="{name:'Tournaments'}"><li class="py-2 px-4 hover:cursor-pointer hover:opacity-75 focus:opacity-75">Tournaments</li></router-link>
+                    <router-link :to="{name:'Brackets'}"><li class="py-2 px-4 hover:cursor-pointer hover:opacity-75 focus:opacity-75">Brackets</li></router-link>
 
 
                     <router-link v-if= "!isAuthenticated" :to="{path:'/login', name:'Login'}"><li class="py-2 px-4 hover:cursor-pointer hover:opacity-75 focus:opacity-75">Login</li></router-link>
 
                     <div v-else class="flex">
-                        <router-link :to="{path:'/secret', name:'Brackets'}"><li class="py-2 px-4 hover:cursor-pointer hover:opacity-75 focus:opacity-75">Brackets</li></router-link>
+                        <router-link :to="{path:'/secret', name:'Tournaments'}"><li class="py-2 px-6 hover:cursor-pointer hover:opacity-75 focus:opacity-75">Tournaments</li></router-link>
 
-                        <router-link :to="{name:'Hello'}"><li class="py-2 px-4 hover:cursor-pointer hover:opacity-75 focus:opacity-75">Support</li></router-link>
+                        <router-link :to="{name:'Hello'}"><li class="py-2 px- hover:cursor-pointer hover:opacity-75 focus:opacity-75">Support</li></router-link>
                         
                         <button class="pl-16" @click="loggingOut">
                         <li
